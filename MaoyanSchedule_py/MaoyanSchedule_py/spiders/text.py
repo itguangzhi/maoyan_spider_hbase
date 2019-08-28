@@ -18,10 +18,5 @@ def getCinemaList(cityid:str):
     except:
         return []
 
-# for i in getCityList():
-#     print(i)
-
-# for a in getCinemaList(str(10)):
-#     print(a)
 
 

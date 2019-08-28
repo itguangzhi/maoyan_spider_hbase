@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'MaoyanSchedule_py.spiders'
 #USER_AGENT = 'MaoyanSchedule_py (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -64,9 +64,10 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'MaoyanSchedule_py.pipelines.MaoyanschedulePyPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   # 'MaoyanSchedule_py.pipelines.MaoyanschedulePyPipeline': 300,
+   'MaoyanSchedule_py.pipelines.MaoyanscheduleHbasePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
