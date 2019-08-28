@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="317d8d1a-85b2-45f8-a8d0-f65ece3ce24f" name="pi" url="http://192.168.30.57">
+        <fileTransfer host="192.168.30.57" port="22" rootFolder="/home/pi/Scripts/python/scrapy_spider" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
