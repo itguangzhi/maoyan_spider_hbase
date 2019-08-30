@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="50a5ac2c-aaab-4080-b6fc-92a5a41b9299" name="ubanto" url="http://192.168.30.119">
+        <fileTransfer host="192.168.30.119" port="22" rootFolder="/home/hu/scripts" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

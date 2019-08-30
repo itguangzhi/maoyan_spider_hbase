@@ -15,6 +15,20 @@ SPIDER_MODULES = ['MaoyanSchedule_py.spiders']
 NEWSPIDER_MODULE = 'MaoyanSchedule_py.spiders'
 
 
+# LOG_FILE = "mySpider.log"
+LOG_LEVEL = "INFO"
+
+# .修改并发请求数为100
+CONCURRENT_REQUESTS = 400
+
+CONCURRENT_ITEMS = 1200
+
+CONCURRENT_REQUESTS_PER_DOMAIN = 100
+
+CONCURRENT_REQUESTS_PER_IP = 100
+# 降低下载延迟
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'MaoyanSchedule_py (+http://www.yourdomain.com)'
 

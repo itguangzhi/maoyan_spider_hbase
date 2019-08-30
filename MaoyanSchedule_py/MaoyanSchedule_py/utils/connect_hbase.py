@@ -92,6 +92,7 @@ if __name__ == '__main__':
     conn = happybase.Connection(host=hbase_thrift_host, port=hbase_thrift_port)
     colume_fimaly = "cf1"
     rowkey = ""
+
     res = read_hbase(conn,hbase_table_name)
     print(res)
     # dic ={ '201908280313917':{'cinema_id': "16163",

@@ -12,6 +12,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # 调用execute()函数执行scarpy的命令 scary crawl 爬虫文件名字
 
+while True:
+    execute(['scarpy', 'crawl', 'maoyan'])
+
+
 execute(['scarpy', 'crawl', 'maoyan'])
 # execute(['scarpy', 'crawl', 'maoyan_schedul'])
 

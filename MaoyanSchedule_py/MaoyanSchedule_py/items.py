@@ -22,3 +22,15 @@ class MaoyanschedulePyItem(scrapy.Item):
     movie_dur = scrapy.Field()
     cinema_id = scrapy.Field()
     cinema_nm = scrapy.Field()
+    city_id = scrapy.Field()
+    city_nm = scrapy.Field()
+    spider_time = scrapy.Field()
+
+    # 影片相关的信息内容
+    image_url_list = scrapy.Field()
+    movie_name = scrapy.Field()
+    movie_category = scrapy.Field()
+    movie_content = scrapy.Field()
+
+    # 按照批量数据入库方法
+    schedul_item = scrapy.Field()

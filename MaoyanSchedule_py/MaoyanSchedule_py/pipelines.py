@@ -22,6 +22,10 @@ class MaoyanscheduleHbasePipeline(object):
     def __init__(self):
         self.conn = happybase.Connection(host=self.hbase_thrift_host,
                                          port=self.hbase_thrift_port)
+        self.connp = happybase.ConnectionPool(host=self.hbase_thrift_host,
+                                            port=self.hbase_thrift_port,
+                                             size=1000)
+
         self.cf = "cf1"
 
 
@@ -40,9 +44,16 @@ class MaoyanscheduleHbasePipeline(object):
                 self.cf + ":show_th" : item["show_th"],
                 self.cf + ":spider_url" : item["spider_url"],
                 self.cf + ":show_tp" : item["show_tp"],
+                self.cf + ":city_id" : item["city_id"],
+                self.cf + ":city_nm" : item["city_nm"],
+                self.cf + ":spider_time" : item["spider_time"],
             }
         }
-        print("开始存储")
-        print(insert_data)
-        send_hbase_one(self.conn, self.hbase_table_name, insert_data)
+
+        insert_data_list = item["schedul_item"]
+
+        with self.connp.connection() as conn:
+            send_hbase_one(conn, self.hbase_table_name, insert_data_list)
+            # send_hbase_one(conn, self.hbase_table_name, insert_data)
         return item
+
