@@ -146,7 +146,7 @@ class MaoyanSpider(scrapy.Spider):
         MaoyanschedulePyItem["movie_category"] = movie_category
         MaoyanschedulePyItem["movie_content"] = movie_content
 
-        yield MaoyanschedulePyItem
+
 
 
 
