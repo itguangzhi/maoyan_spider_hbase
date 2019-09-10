@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+from fake_useragent import UserAgent
 
+ua = UserAgent()
 # Scrapy settings for MaoyanSchedule_py project
 #
 # For simplicity, this file contains only settings considered important or
@@ -14,6 +16,11 @@ BOT_NAME = 'MaoyanSchedule_py'
 SPIDER_MODULES = ['MaoyanSchedule_py.spiders']
 NEWSPIDER_MODULE = 'MaoyanSchedule_py.spiders'
 
+SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
+
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+REDIS_URL = 'redis://root@192.168.30.35:6379/3'
 
 # LOG_FILE = "mySpider.log"
 LOG_LEVEL = "INFO"
@@ -28,9 +35,8 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 1000
 CONCURRENT_REQUESTS_PER_IP = 1000
 # 降低下载延迟
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'MaoyanSchedule_py (+http://www.yourdomain.com)'
+#USER_AGENT = ua.random()
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -53,10 +59,11 @@ ROBOTSTXT_OBEY = False
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+  'User-Agent':str(ua.random),
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en',
+}
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
@@ -81,6 +88,7 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
    # 'MaoyanSchedule_py.pipelines.MaoyanschedulePyPipeline': 300,
    'MaoyanSchedule_py.pipelines.MaoyanscheduleHbasePipeline': 300,
+   'scrapy_redis.pipelines.RedisPipeline':301
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

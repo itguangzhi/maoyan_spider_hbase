@@ -6,6 +6,8 @@ from MaoyanSchedule_py.items import MaoyanschedulePyItem
 from scrapy.http import Request
 import json
 
+
+
 import time
 MaoyanschedulePyItem = MaoyanschedulePyItem()
 
@@ -48,7 +50,7 @@ class MaoyanSpider(scrapy.Spider):
                                     "city_nm":response.meta["city_nm"]}
                               )
         except Exception as e:
-            print("城市 "+ response.meta["city_nm"] +" 影院解析错误",str(response.text))
+            print("城市 "+ response.meta["city_nm"] +" 影院列表解析错误，地址：",str(response.url))
             print(e)
 
 
@@ -122,13 +124,13 @@ class MaoyanSpider(scrapy.Spider):
             MaoyanschedulePyItem["schedul_item"] = schedul_data
             yield MaoyanschedulePyItem
 
-            yield Request(
-                url=response.url,
-                meta={"city_id": response.meta["city_id"],
-                      "city_nm": response.meta["city_nm"]},
-                dont_filter=True,
-                callback=self.parse_detail
-            )
+            # yield Request(
+            #     url=response.url,
+            #     meta={"city_id": response.meta["city_id"],
+            #           "city_nm": response.meta["city_nm"]},
+            #     dont_filter=True,
+            #     callback=self.parse_detail
+            # )
         except Exception as e:
             print(response.url,e)
 
