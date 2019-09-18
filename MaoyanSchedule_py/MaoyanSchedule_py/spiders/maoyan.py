@@ -18,6 +18,7 @@ class MaoyanSpider(scrapy.Spider):
 
 
     def parse(self, response):
+        day = time.strftime("%Y-%m-%d", time.localtime())
         cities_list = []
         city_list = json.loads(response.text)
         for city_list_A in city_list["letterMap"]:
@@ -27,7 +28,7 @@ class MaoyanSpider(scrapy.Spider):
                 cityid = city["id"]
                 cityname = city["nm"]
                 print("## use " + cityname,end="")
-                cinema_list_url = "http://m.maoyan.com/ajax/cinemaList?day=2019-08-22&offset=0&limit=999&cityId="
+                cinema_list_url = "http://m.maoyan.com/ajax/cinemaList?day="+ day +"&offset=0&limit=999&cityId="
                 yield Request(url=cinema_list_url+str(cityid),
                               dont_filter=True,
                               callback=self.cinemalist_parse,
